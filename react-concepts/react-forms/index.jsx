@@ -101,10 +101,15 @@ function App() {
 
   function signUp(formData) {
     const email = formData.get("email");
+    console.log(email);
     const password = formData.get("password");
+    console.log(password);
     const employmentStatus = formData.get("employmentStatus");
+    console.log(employmentStatus);
     const dietaryRestrictions = formData.getAll("dietaryRestrictions");
     console.log(dietaryRestrictions);
+    const favColor = formData.get("favColor");
+    console.log(favColor);
   }
 
   return (
@@ -176,6 +181,20 @@ function App() {
             Gluten-free
           </label>
         </fieldset>
+
+        <label htmlFor="favColor">What is your favorite color?</label>
+        <select id="favColor" name="favColor" defaultValue="" required>
+          <option value="" disabled>
+            -- Choose a color --
+          </option>
+          <option value="red">Red</option>
+          <option value="orange">Orange</option>
+          <option value="yellow">Yellow</option>
+          <option value="green">Green</option>
+          <option value="blue">Blue</option>
+          <option value="indigo">Indigo</option>
+          <option value="violet">Violet</option>
+        </select>
 
         <button>Submit</button>
       </form>
