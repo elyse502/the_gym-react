@@ -1,25 +1,17 @@
+import React from "react";
+
 export default function Main() {
-  const ingredients = ["Chicken", "Oregano", "Tomatoes"];
+  const [ingredients, setIngredients] = React.useState([]);
 
   const ingredientsListItems = ingredients.map((ingredient) => (
     <li key={ingredient}>{ingredient}</li>
   ));
 
-  /**
-   * Challenge:
-   * Add the new ingredient to the array of ingredients. Also, add a
-   * console.log(ingredients) after adding the ingredient, because
-   * **warning**: you aren't going to see the page update!
-   *
-   * Hint: this is a one-liner solution, so don't overthink it 😅
-   */
-
   function handleSubmit(event) {
     event.preventDefault();
     const formData = new FormData(event.currentTarget);
     const newIngredient = formData.get("ingredient");
-    ingredients.push(newIngredient);
-    console.log(ingredients);
+    setIngredients((prevIngredients) => [...prevIngredients, newIngredient]);
   }
 
   return (
