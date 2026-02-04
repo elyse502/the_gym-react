@@ -5,19 +5,21 @@ import Pad from "./Pad";
 export default function App() {
   const [pads, setPads] = React.useState(padsData);
 
-  const buttonElements = pads.map((pad) => (
-    <Pad key={pad.id} color={pad.color} on={pad.on} />
-  ));
-
   /**
-   * Challenge part 2:
-   * 2. Pass the Pad component a prop called `color` with the
-   *    value of the same name from the `padsData` objects
-   * 3. In the Pad component, apply an inline style to the <button>
-   *    to set the backgroundColor of the button.
+   * Challenge: Create a toggle() function that logs
+   * "clicked!" to the console
    *
-   * (We'll deal with the "on" property soon)
+   * Pass that function down to each of the Pad components
+   * and set it up so when they get clicked, the function runs
    */
+
+  function toggle() {
+    console.log("Clicked!");
+  }
+
+  const buttonElements = pads.map((pad) => (
+    <Pad key={pad.id} color={pad.color} on={pad.on} toggle={toggle} />
+  ));
 
   return (
     <main>
