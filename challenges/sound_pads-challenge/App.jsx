@@ -1,23 +1,23 @@
 import React from "react";
 import padsData from "./pads";
+import Pad from "./Pad";
 
-export default function App({ darkMode }) {
+export default function App() {
   const [pads, setPads] = React.useState(padsData);
 
-  /**
-   * Challenge: use a ternary to determine the backgroundColor
-   * of the buttons
-   * If darkMode is true, set them to "#222222"
-   * If darkMode is false, set them to "#cccccc"
-   */
-
-  const styles = {
-    backgroundColor: darkMode ? "#222222" : "#cccccc",
-  };
-
   const buttonElements = pads.map((pad) => (
-    <button style={styles} key={pad.id}></button>
+    <Pad key={pad.id} color={pad.color} />
   ));
+
+  /**
+   * Challenge part 2:
+   * 2. Pass the Pad component a prop called `color` with the
+   *    value of the same name from the `padsData` objects
+   * 3. In the Pad component, apply an inline style to the <button>
+   *    to set the backgroundColor of the button.
+   *
+   * (We'll deal with the "on" property soon)
+   */
 
   return (
     <main>
