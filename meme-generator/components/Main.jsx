@@ -7,19 +7,33 @@ export default function Main() {
     imageUrl: "http://i.imgflip.com/1bij.jpg",
   });
 
-  /**
-   * Challenge: move the hardcoded meme info into React
-   * state. Use an object with `topText`, `bottomText`,
-   * and `imageUrl` properties, and set the initial values to
-   * the ones hardcoded below.
-   */
+  function handleChange(event) {
+    const { value } = event.currentTarget;
+
+    /**
+     * Challenge: update the topText value in the meme state
+     * object every time the topText input box is changed
+     *
+     * Note: don't worry about bottomText at this point.
+     */
+
+    setMeme((prevMeme) => ({
+      ...prevMeme,
+      topText: value,
+    }));
+  }
 
   return (
     <main>
       <div className="form">
         <label>
           Top Text
-          <input type="text" placeholder="One does not simply" name="topText" />
+          <input
+            type="text"
+            placeholder="One does not simply"
+            name="topText"
+            onChange={handleChange}
+          />
         </label>
 
         <label>
