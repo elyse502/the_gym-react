@@ -4,8 +4,17 @@ import ClaudeRecipe from "./ClaudeRecipe";
 import { getRecipeFromChefClaude, getRecipeFromMistral } from "../configs/ai";
 
 export default function Main() {
-  const [ingredients, setIngredients] = React.useState([]);
+  // const [ingredients, setIngredients] = React.useState([]);
+  const [ingredients, setIngredients] = React.useState([
+    "chicken",
+    "all the main spices",
+    "corn",
+    "heavy cream",
+    "pasta",
+  ]);
   const [recipe, setRecipe] = React.useState("");
+  const recipeSection = React.useRef(null);
+  console.log(recipeSection);
 
   async function getRecipe() {
     const recipeMarkdown = await getRecipeFromMistral(ingredients);
@@ -30,7 +39,11 @@ export default function Main() {
       </form>
 
       {ingredients.length > 0 && (
-        <IngredientsList ingredients={ingredients} getRecipe={getRecipe} />
+        <IngredientsList
+          ingredients={ingredients}
+          getRecipe={getRecipe}
+          ref={recipeSection}
+        />
       )}
 
       {recipe && <ClaudeRecipe recipe={recipe} />}
