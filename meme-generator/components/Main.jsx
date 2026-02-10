@@ -5,14 +5,37 @@ export default function Main() {
   const [meme, setMeme] = useState({
     topText: "One does not simply",
     bottomText: "Walk into Mordor",
-    imageUrl: "http://i.imgflip.com/1bij.jpg",
+    imageUrl: "https://i.imgflip.com/1bij.jpg",
   });
   const [allMemes, setAllMemes] = useState([]);
 
-  useEffect(() => {
+  /*useEffect(() => {
     fetch("https://api.imgflip.com/get_memes")
       .then((res) => res.json())
       .then((data) => setAllMemes(data.data.memes));
+  }, []);*/
+
+  // Alternative - Modern “best practice” using AbortController
+  useEffect(() => {
+    const controller = new AbortController();
+
+    async function fetchMemes() {
+      try {
+        const res = await fetch("https://api.imgflip.com/get_memes", {
+          signal: controller.signal,
+        });
+        const data = await res.json();
+        setAllMemes(data.data.memes);
+      } catch (err) {
+        if (err.name !== "AbortError") {
+          console.error(err);
+        }
+      }
+    }
+
+    fetchMemes();
+
+    return () => controller.abort();
   }, []);
 
   /**
