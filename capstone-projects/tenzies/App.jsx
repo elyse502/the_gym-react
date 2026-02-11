@@ -37,8 +37,21 @@ export default function App() {
     setDice(generateAllNewDice());
   }
 
+  /**
+   * Challenge: Update the `hold` function to flip
+   * the `isHeld` property on the object in the array
+   * that was clicked, based on the `id` prop passed
+   * into the function.
+   *
+   * Hint: as usual, there's more than one way to
+   * accomplish this.
+   */
   function hold(id) {
-    console.log(id);
+    setDice((oldDice) =>
+      oldDice.map((die) =>
+        die.id === id ? { ...die, isHeld: !die.isHeld } : die,
+      ),
+    );
   }
 
   /** map over dice here */
