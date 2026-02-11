@@ -1,13 +1,14 @@
 import { useState } from "react";
 import Die from "./components/Die";
+import { nanoid } from "nanoid";
 
 /**
- * Challenge: Create a `Roll Dice` button that will re-roll
- * all 10 dice
+ * Challenge: Update the array of numbers in state to be
+ * an array of objects instead. Each object should look like:
+ * { value: <random number>, isHeld: false }
  *
- * Clicking the button should generate a new array of numbers
- * and set the `dice` state to that new array (thus re-rendering
- * the array to the page)
+ * Making this change will break parts of our code, so make
+ * sure to update things so we're back to a working state
  */
 
 export default function App() {
@@ -22,7 +23,11 @@ export default function App() {
     return newDice;*/
 
     // Alternative solution using Array.fill and Array.map:
-    return new Array(10).fill(0).map(() => Math.ceil(Math.random() * 6));
+    return new Array(10).fill(0).map(() => ({
+      value: Math.ceil(Math.random() * 6),
+      isHeld: false,
+      id: nanoid(),
+    }));
   }
 
   function rollDice() {
@@ -30,13 +35,17 @@ export default function App() {
   }
 
   /** map over dice here */
-  const diceElements = dice.map((num) => <Die value={num} />);
+  const diceElements = dice.map((dieObj) => (
+    <Die key={dieObj.id} value={dieObj.value} />
+  ));
 
   return (
     <main>
       <div className="dice-container">{diceElements}</div>
       {/*New button here*/}
-      <button className="roll-dice" onClick={rollDice}>Roll</button>
+      <button className="roll-dice" onClick={rollDice}>
+        Roll
+      </button>
     </main>
   );
 }
