@@ -3,19 +3,34 @@ import Die from "./components/Die";
 import { nanoid } from "nanoid";
 
 export default function App() {
-  /**
-   * Challenge: Create a function `hold` that takes
-   * `id` as a parameter. For now, just have the function
-   * console.log(id).
-   *
-   * Then, figure out how to pass that function down to each
-   * instance of the Die component so when each one is clicked,
-   * it logs its own unique ID property. (Hint: there's more
-   * than one way to make that work, so just choose whichever
-   * you want)
-   */
-
   const [dice, setDice] = useState(generateAllNewDice());
+
+  // check if the game is won
+
+  /**
+   * Critical thinking time!
+   *
+   * We want to indicate to the user that the game is over
+   * if (1) all the dice are held, and (2) all the dice have
+   * the same value.
+   *
+   * How might we do this? Some questions to consider:
+   *
+   * 1. Do we need to save a `gameWon` value in state? If so, why?
+   *    If not, why not?
+   * No.
+   *
+   *
+   * 2. Do we need to create a side effect to synchronize the `gameWon`
+   *    value (whether it's in state or not) with the current state of
+   *    the dice?
+   * No.
+   *
+   *
+   * Conclusion:
+   * We can derive the gameWon status based on the condition(s) of the current
+   * dice state on every render.
+   */
 
   function generateAllNewDice() {
     /*const newDice = [];
@@ -32,16 +47,6 @@ export default function App() {
       id: nanoid(),
     }));
   }
-
-  /**
-   * Challenge: Update the `rollDice` function to not just roll
-   * all new dice, but instead to look through the existing dice
-   * to NOT role any that are being `held`.
-   *
-   * Hint: this will look relatively similiar to the `hold`
-   * function below. When we're "rolling" a die, we're really
-   * just updating the `value` property of the die object.
-   */
 
   function rollDice() {
     setDice((oldDice) =>
