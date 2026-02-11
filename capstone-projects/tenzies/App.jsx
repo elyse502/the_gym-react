@@ -33,19 +33,24 @@ export default function App() {
     }));
   }
 
+  /**
+   * Challenge: Update the `rollDice` function to not just roll
+   * all new dice, but instead to look through the existing dice
+   * to NOT role any that are being `held`.
+   *
+   * Hint: this will look relatively similiar to the `hold`
+   * function below. When we're "rolling" a die, we're really
+   * just updating the `value` property of the die object.
+   */
+
   function rollDice() {
-    setDice(generateAllNewDice());
+    setDice((oldDice) =>
+      oldDice.map((die) =>
+        die.isHeld ? die : { ...die, value: Math.ceil(Math.random() * 6) },
+      ),
+    );
   }
 
-  /**
-   * Challenge: Update the `hold` function to flip
-   * the `isHeld` property on the object in the array
-   * that was clicked, based on the `id` prop passed
-   * into the function.
-   *
-   * Hint: as usual, there's more than one way to
-   * accomplish this.
-   */
   function hold(id) {
     setDice((oldDice) =>
       oldDice.map((die) =>
@@ -68,8 +73,12 @@ export default function App() {
 
   return (
     <main>
+      <h1 className="title">Tenzies</h1>
+      <p className="instructions">
+        Roll until all dice are the same. Click each die to freeze it at its
+        current value between rolls.
+      </p>
       <div className="dice-container">{diceElements}</div>
-      {/*New button here*/}
       <button className="roll-dice" onClick={rollDice}>
         Roll
       </button>
