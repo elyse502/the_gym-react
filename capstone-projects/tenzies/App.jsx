@@ -1,38 +1,19 @@
 import { useState } from "react";
 import Die from "./components/Die";
 import { nanoid } from "nanoid";
+import Confetti from "react-confetti";
 
 export default function App() {
   const [dice, setDice] = useState(generateAllNewDice());
 
-  /**
-   * Challenge:
-   * Log "Game won!" to the console only if the 2 winning
-   * conditions are met.
-   *
-   * 1. all the dice are being held, and
-   * 2. all the dice have the same value
-   *
-   * For now, no need to even save a variable!
-   */
-
-  /**
-   * Challenge part 2:
-   * 1. Create a new `gameWon` variable.
-   * 2. If `gameWon` is true, change the button text to
-   *    "New Game" instead of "Roll"
-   */
-
-  /*if (
-    dice.every((die) => die.isHeld) &&
-    dice.every((die) => die.value === dice[0].value)
-  ) {
-    console.log("Game won!");
-  }*/
-
   const gameWon =
     dice.every((die) => die.isHeld) &&
     dice.every((die) => die.value === dice[0].value);
+
+  /**
+   * Challenge:
+   * Make the confetti drop when the game is won! 🎉🎊
+   */
 
   function generateAllNewDice() {
     /*const newDice = [];
@@ -80,6 +61,7 @@ export default function App() {
 
   return (
     <main>
+      {gameWon && <Confetti />}
       <h1 className="title">Tenzies</h1>
       <p className="instructions">
         Roll until all dice are the same. Click each die to freeze it at its
