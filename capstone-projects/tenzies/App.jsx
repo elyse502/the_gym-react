@@ -33,12 +33,21 @@ export default function App() {
     }));
   }
 
+  /**
+   * Challenge: Allow the user to play a new game when the
+   * button is clicked
+   */
+
   function rollDice() {
-    setDice((oldDice) =>
-      oldDice.map((die) =>
-        die.isHeld ? die : { ...die, value: Math.ceil(Math.random() * 6) },
-      ),
-    );
+    if (!gameWon) {
+      setDice((oldDice) =>
+        oldDice.map((die) =>
+          die.isHeld ? die : { ...die, value: Math.ceil(Math.random() * 6) },
+        ),
+      );
+    } else {
+      setDice(generateAllNewDice());
+    }
   }
 
   function hold(id) {
