@@ -5,32 +5,34 @@ import { nanoid } from "nanoid";
 export default function App() {
   const [dice, setDice] = useState(generateAllNewDice());
 
-  // check if the game is won
+  /**
+   * Challenge:
+   * Log "Game won!" to the console only if the 2 winning
+   * conditions are met.
+   *
+   * 1. all the dice are being held, and
+   * 2. all the dice have the same value
+   *
+   * For now, no need to even save a variable!
+   */
 
   /**
-   * Critical thinking time!
-   *
-   * We want to indicate to the user that the game is over
-   * if (1) all the dice are held, and (2) all the dice have
-   * the same value.
-   *
-   * How might we do this? Some questions to consider:
-   *
-   * 1. Do we need to save a `gameWon` value in state? If so, why?
-   *    If not, why not?
-   * No.
-   *
-   *
-   * 2. Do we need to create a side effect to synchronize the `gameWon`
-   *    value (whether it's in state or not) with the current state of
-   *    the dice?
-   * No.
-   *
-   *
-   * Conclusion:
-   * We can derive the gameWon status based on the condition(s) of the current
-   * dice state on every render.
+   * Challenge part 2:
+   * 1. Create a new `gameWon` variable.
+   * 2. If `gameWon` is true, change the button text to
+   *    "New Game" instead of "Roll"
    */
+
+  /*if (
+    dice.every((die) => die.isHeld) &&
+    dice.every((die) => die.value === dice[0].value)
+  ) {
+    console.log("Game won!");
+  }*/
+
+  const gameWon =
+    dice.every((die) => die.isHeld) &&
+    dice.every((die) => die.value === dice[0].value);
 
   function generateAllNewDice() {
     /*const newDice = [];
@@ -85,7 +87,7 @@ export default function App() {
       </p>
       <div className="dice-container">{diceElements}</div>
       <button className="roll-dice" onClick={rollDice}>
-        Roll
+        {gameWon ? "New Game" : "Roll"}
       </button>
     </main>
   );
