@@ -2,17 +2,35 @@ import { useState } from "react";
 import { languages } from "./data/languages";
 
 /**
- * Goal: Build out the main parts of our app
+ * Goal: Allow the user to start guessing the letters
  *
- * Challenge:
- * Display the keyboard ⌨️. Use <button>s for each letter
- * since it'll need to be clickable and tab-accessible.
+ * Challenge: Create a new array in state to hold user's
+ * guessed letters. When the user chooses a letter, add
+ * that letter to this state array.
+ *
+ * Don't worry about whether it was a right or wrong
+ * guess yet.
  */
 
 export default function AssemblyEndgame() {
   const [currentWord, setCurrentWord] = useState("react");
+  const [guessedLetters, setGuessedLetters] = useState([]);
+  console.log(guessedLetters);
 
   const alphabet = "abcdefghijklmnopqrstuvwxyz";
+
+  function addGuessedLetter(letter) {
+    setGuessedLetters((prevLetters) =>
+      prevLetters.includes(letter) ? prevLetters : [...prevLetters, letter],
+    );
+
+    // Alternative approach using a Set to avoid duplicates
+    /*setGuessedLetters((prevLetters) => {
+      const lettersSet = new Set(prevLetters);
+      lettersSet.add(letter);
+      return Array.from(lettersSet);
+    });*/
+  }
 
   const languageElements = languages.map((lang) => {
     const styles = {
@@ -30,9 +48,11 @@ export default function AssemblyEndgame() {
     .split("")
     .map((letter, index) => <span key={index}>{letter.toUpperCase()}</span>);
 
-  const keyboardElements = alphabet
-    .split("")
-    .map((letter) => <button key={letter}>{letter.toUpperCase()}</button>);
+  const keyboardElements = alphabet.split("").map((letter) => (
+    <button key={letter} onClick={() => addGuessedLetter(letter)}>
+      {letter.toUpperCase()}
+    </button>
+  ));
 
   return (
     <main>
