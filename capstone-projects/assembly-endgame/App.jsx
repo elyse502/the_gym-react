@@ -6,12 +6,13 @@ import { clsx } from "clsx";
  * Goal: Add in the incorrect guesses mechanism to the game
  *
  * Challenge:
- * 1. Create a variable `isGameOver` which evaluates to `true`
- *    if the user has guessed incorrectly 8 times. Consider how
- *    we might make this more dynamic if we were ever to add or
- *    remove languages from the languages array.
- * 2. Conditionally render the New Game button only if the game
- *    is over.
+ * Conditionally render either the "won" or "lost" statuses
+ * from the design, both the text and the styles, based on the
+ * new derived variables.
+ *
+ * Note: We always want the surrounding `section` to be rendered,
+ * so only change the content inside that section. Otherwise the
+ * content on the page would jump around a bit too much.
  */
 
 export default function AssemblyEndgame() {
@@ -95,6 +96,11 @@ export default function AssemblyEndgame() {
     );
   });
 
+  const gameStatusClass = clsx("game-status", {
+    won: isGameWon,
+    lost: isGameLost,
+  });
+
   return (
     <main>
       <header>
@@ -104,13 +110,29 @@ export default function AssemblyEndgame() {
           from Assembly!
         </p>
       </header>
-      <section className="game-status">
-        <h2>You win!</h2>
-        <p>Well done! 🎉</p>
+
+      <section className={gameStatusClass}>
+        {isGameOver ? (
+          isGameWon ? (
+            <>
+              <h2>You win!</h2>
+              <p>Well done! 🎉</p>
+            </>
+          ) : (
+            <>
+              <h2>Game over!</h2>
+              <p>You lose! Better start learning Assembly 😭</p>
+            </>
+          )
+        ) : null}
       </section>
+
       <section className="language-chips">{languageElements}</section>
+
       <section className="word">{letterElements}</section>
+
       <section className="keyboard">{keyboardElements}</section>
+
       {isGameOver && <button className="new-game">New Game</button>}
     </main>
   );
