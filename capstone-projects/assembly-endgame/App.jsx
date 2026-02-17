@@ -1,15 +1,17 @@
 import { useState } from "react";
 import { languages } from "./data/languages";
 import { clsx } from "clsx";
+import { getFarewellText } from "./data/utils";
 
 /**
- * Backlog:
+ * Challenge: Bid farewell to each programming language
+ * as it gets erased from existance 👋😭
  *
- * - Farewell messages in status section
- * - Fix a11y issues
- * - Make the new game button work
- * - Choose a random word from a list of words
- * - Confetti drop when the user wins
+ * Use the `getFarewellText` function from the new utils.js
+ * file to generate the text.
+ *
+ * Check hint.md if you're feeling stuck, but do your best
+ * to solve the challenge without the hint! 🕵️
  */
 
 export default function AssemblyEndgame() {
@@ -26,6 +28,9 @@ export default function AssemblyEndgame() {
     .every((letter) => guessedLetters.includes(letter));
   const isGameLost = wrongGuessCount >= languages.length - 1;
   const isGameOver = isGameWon || isGameLost;
+  const lastGuessedLetter = guessedLetters[guessedLetters.length - 1];
+  const isLastGuessIncorrect =
+    lastGuessedLetter && !currentWord.includes(lastGuessedLetter);
 
   // Static values
   const alphabet = "abcdefghijklmnopqrstuvwxyz";
@@ -96,11 +101,16 @@ export default function AssemblyEndgame() {
   const gameStatusClass = clsx("game-status", {
     won: isGameWon,
     lost: isGameLost,
+    farewell: !isGameOver && isLastGuessIncorrect,
   });
 
   function renderGameStatus() {
-    if (!isGameOver) {
-      return null;
+    if (!isGameOver && isLastGuessIncorrect) {
+      return (
+        <p className="farewell-message">
+          {getFarewellText(languages[wrongGuessCount - 1].name)}
+        </p>
+      );
     }
 
     if (isGameWon) {
@@ -110,7 +120,9 @@ export default function AssemblyEndgame() {
           <p>Well done! 🎉</p>
         </>
       );
-    } else {
+    }
+
+    if (isGameLost) {
       return (
         <>
           <h2>Game over!</h2>
@@ -118,6 +130,8 @@ export default function AssemblyEndgame() {
         </>
       );
     }
+
+    return null;
   }
 
   return (
