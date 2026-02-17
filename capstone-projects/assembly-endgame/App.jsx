@@ -3,16 +3,13 @@ import { languages } from "./data/languages";
 import { clsx } from "clsx";
 
 /**
- * Goal: Add in the incorrect guesses mechanism to the game
+ * Backlog:
  *
- * Challenge:
- * Conditionally render either the "won" or "lost" statuses
- * from the design, both the text and the styles, based on the
- * new derived variables.
- *
- * Note: We always want the surrounding `section` to be rendered,
- * so only change the content inside that section. Otherwise the
- * content on the page would jump around a bit too much.
+ * - Farewell messages in status section
+ * - Fix a11y issues
+ * - Make the new game button work
+ * - Choose a random word from a list of words
+ * - Confetti drop when the user wins
  */
 
 export default function AssemblyEndgame() {
