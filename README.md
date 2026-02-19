@@ -219,8 +219,6 @@ This project is licensed under the MIT License - see the [LICENSE](https://githu
 
 ---
 
----
-
 ## 🚀 Support
 
 For support, email _elyseniyibizi502@gmail.com_ or create an issue in the GitHub repository.
