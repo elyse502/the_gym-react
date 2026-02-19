@@ -248,6 +248,6 @@ For any questions or support, please contact:
 
 **Built with ❤️ during my React journey at [The Gym Rwanda](https://www.the-gym.rw)**
 
-[⬆ Back to Top](#)
+[⬆ Back to Top](#-the-gym-react)
 
 </div>
