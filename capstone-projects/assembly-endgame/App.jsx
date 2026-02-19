@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { languages } from "./data/languages";
 import { clsx } from "clsx";
-import { getFarewellText } from "./data/utils";
+import { getFarewellText } from "./utils/utils";
 
 /**
  * Challenge: Bid farewell to each programming language
