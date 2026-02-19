@@ -1,5 +1,5 @@
 <div align="center">
-    <h1><sup>🌐</sup><i>THE GYM REACT</i><sub>ᨒ</sub></h1>
+    <h1 id="the-gym-react"><sup>🌐</sup><i>THE GYM REACT</i><sub>ᨒ</sub></h1>
     <p>A collection of React applications built during my React learning phase at The Gym Rwanda Software Engineering program. These projects demonstrate my understanding of React fundamentals, component-based architecture, and modern frontend development practices.</p>
 </div>
 
@@ -248,6 +248,6 @@ For any questions or support, please contact:
 
 **Built with ❤️ during my React journey at [The Gym Rwanda](https://www.the-gym.rw)**
 
-[⬆ Back to Top](#-the-gym-react)
+[⬆ Back to Top](#the-gym-react)
 
 </div>
