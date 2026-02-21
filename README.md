@@ -40,7 +40,7 @@
 
 |                                 Project Name                                  |                                                                          Preview                                                                           |
 | :---------------------------------------------------------------------------: | :--------------------------------------------------------------------------------------------------------------------------------------------------------: |
-|                            **🤖 [Chef Claude](#)**                            |                                 <img src="./assets/chef-claude.png" width="400" height="200" alt="Claude Chat Assistant"/>                                 |
+|                            **🤖 [Chef Claude](#)**                            |                         <a href="#"><img src="./assets/chef-claude.png" width="400" height="200" alt="Claude Chat Assistant"/><a/>                         |
 |        **🎨 [Tenzies Game 🔗](https://tenzies-blush-rho.vercel.app)**         |      <a href="https://tenzies-blush-rho.vercel.app"><img src="./assets/tenzies.png" width="400" height="200" alt="AI Color Palette Generator" /><a />      |
 | **📝 [Assembly Endgame 🔗](https://assembly-endgame-three-topaz.vercel.app)** | <a href="https://assembly-endgame-three-topaz.vercel.app"> <img src="./assets/assembly-endgame.png" width="400" height="200" alt="Assemby Endgame" /><a /> |
 |   **✨ [Meme Generator 🔗](https://meme-generator-eight-ochre.vercel.app)**   |    <a href="https://meme-generator-eight-ochre.vercel.app"><img src="./assets/meme-generator.png" width="400" height="200" alt="Meme Generator" /><a />    |
