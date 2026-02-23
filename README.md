@@ -44,7 +44,8 @@
 |        **🎨 [Tenzies Game 🔗](https://tenzies-blush-rho.vercel.app)**         |      <a href="https://tenzies-blush-rho.vercel.app"><img src="./assets/tenzies.png" width="400" height="200" alt="AI Color Palette Generator" /><a />      |
 | **📝 [Assembly Endgame 🔗](https://assembly-endgame-three-topaz.vercel.app)** | <a href="https://assembly-endgame-three-topaz.vercel.app"> <img src="./assets/assembly-endgame.png" width="400" height="200" alt="Assemby Endgame" /><a /> |
 |   **✨ [Meme Generator 🔗](https://meme-generator-eight-ochre.vercel.app)**   |    <a href="https://meme-generator-eight-ochre.vercel.app"><img src="./assets/meme-generator.png" width="400" height="200" alt="Meme Generator" /><a />    |
-|    **📋 [TaskFlow ToDo App 🔗](https://taskflow-todoapp-five.vercel.app)**    |         <a href="https://taskflow-todoapp-five.vercel.app/"><img src="./assets/todo-app.png" width="400" height="200" alt="Meme Generator" /><a />         |
+|    **📋 [TaskFlow ToDo App 🔗](https://taskflow-todoapp-five.vercel.app)**    |         <a href="https://taskflow-todoapp-five.vercel.app"><img src="./assets/todo-app.png" width="400" height="200" alt="Meme Generator" /><a />          |
+|     **🧮 [Calculator 📐](https://calculator-seven-gamma-82.vercel.app)**      |      <a href="https://calculator-seven-gamma-82.vercel.app"><img src="./assets/calculator.png" width="400" height="200" alt="Meme Generator" /><a />       |
 
 </div>
 
@@ -142,6 +143,7 @@ Through these projects, I've mastered:
 | Assembly Endgame  | [Live Demo](https://assembly-endgame-three-topaz.vercel.app) | [GitHub](https://github.com/elyse502/the_gym-react/tree/main/capstone-projects/assembly-endgame) |
 | Meme Generator    | [Live Demo](https://meme-generator-eight-ochre.vercel.app)   | [GitHub](https://github.com/elyse502/the_gym-react/tree/main/meme-generator)                     |
 | TaskFlow ToDo App | [Live Demo](https://taskflow-todoapp-five.vercel.app)        | [GitHub](https://github.com/elyse502/the_gym-react/tree/main/capstone-projects/todo-app)         |
+| Calculator        | [Live Demo](https://calculator-seven-gamma-82.vercel.app)    | [GitHub](https://github.com/elyse502/the_gym-react/tree/main/capstone-projects/calculator-app)   |
 
 ---
 
