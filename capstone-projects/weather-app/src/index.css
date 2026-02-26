@@ -1,0 +1,40 @@
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap");
+
+@import "tailwindcss";
+
+* {
+  font-family: "DM Sans", "Segoe UI", sans-serif;
+}
+
+body {
+  -webkit-font-smoothing: antialiased;
+  background: #0f2027;
+}
+
+input::placeholder {
+  color: rgba(255, 255, 255, 0.35);
+}
+
+@layer base {
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  scrollbar-width: none;
+}
+.weather-transition {
+  transition: background 1.2s ease;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
