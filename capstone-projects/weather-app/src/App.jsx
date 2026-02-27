@@ -73,9 +73,12 @@ const App = () => {
           {!loading && !error && hasData && (
             <>
               <CurrentWeather data={current} units={units} />
-              <div className="h-px bg-white/[0.08] -mx-1" />
-
-              {/* ForecastStrip... */}
+              <div className="h-px bg-white/8 -mx-1" />
+              <ForecastStrip
+                forecast={forecast}
+                units={units}
+                weatherCode={current.weatherCode}
+              />
             </>
           )}
         </div>

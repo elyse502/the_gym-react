@@ -42,7 +42,27 @@ const CurrentWeather = ({ data, units }) => {
         </p>
       </div>
 
-      {/* Stat grid... */}
+      {/* Stat grid */}
+      <div className="grid grid-cols-2 sm:grid-cols-3 gap-2.5 mt-1">
+        <StatCard
+          icon="💨"
+          label="Wind"
+          value={`${Math.round(data.windSpeed)} ${windUnit}`}
+        />
+        <StatCard
+          icon="🌡️"
+          label="Pressure"
+          value={`${Math.round(data.pressure)} hPa`}
+        />
+        <StatCard
+          icon="👁️"
+          label="Visibility"
+          value={formatVisibility(data.visibility)}
+        />
+        <StatCard icon="💧" label="Humidity" value={`${data.humidity}%`} />
+        <StatCard icon="🌅" label="Sunrise" value={formatTime(data.sunrise)} />
+        <StatCard icon="🌇" label="Sunset" value={formatTime(data.sunset)} />
+      </div>
     </div>
   );
 };
