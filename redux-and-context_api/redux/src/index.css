@@ -6,3 +6,7 @@
   box-sizing: border-box;
   font-family: "DM Sans", sans-serif;
 }
+
+body {
+  background-color: #f0f0f0;
+}

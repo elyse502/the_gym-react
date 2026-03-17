@@ -1,11 +1,12 @@
 import React from "react";
+import Profile from "./components/Profile";
+import Login from "./components/Login";
 
 const App = () => {
   return (
-    <div>
-      <h1 className="font-bold text-xl text-center text-gray-800 underline mt-12">
-        Hello, Redux!
-      </h1>
+    <div className="flex flex-col justify-center items-center gap-6 h-screen">
+      <Profile />
+      <Login />
     </div>
   );
 };
