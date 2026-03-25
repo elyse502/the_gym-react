@@ -1,13 +1,14 @@
-import React from "react";
+import TodoInput from "./components/TodoInput";
+import TodoList from "./components/TodoList";
 
-const App = () => {
+function App() {
   return (
-    <div>
-      <h1 className="font-bold text-2xl text-center text-sky-500 mt-50">
-        Todo App
-      </h1>
+    <div className="max-w-md mx-auto">
+      <h1 className="text-xl p-4">Redux Todo App</h1>
+      <TodoInput />
+      <TodoList />
     </div>
   );
-};
+}
 
 export default App;
