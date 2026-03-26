@@ -7,6 +7,11 @@ const NameTransferLists = () => {
     "Charlie Brown",
     "Diana Prince",
     "Ethan Hunt",
+    "Fiona Green",
+    "Grace Wilson",
+    "Henry Jackson",
+    "Isabella Davis",
+    "Jack White",
   ];
 
   const [secondList, setSecondList] = useState([]);
