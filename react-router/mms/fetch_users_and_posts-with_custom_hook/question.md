@@ -19,19 +19,19 @@ Posts API
 1. Create a custom React hook called `useUsersPosts`.
 2. The hook should:
 
-- fetch 'users' and 'posts' from the two endpoints
+- fetch `users` and `posts` from the two endpoints
 - handle:
   - loading state
   - error state
 
-1. Return the following from the hook:
+3. Return the following from the hook:
 
 - `users`
 - `posts`
 - `loading`
 - `error`
 
-1. In your component:
+4. In your component:
 
 - display a dropdown or input field to select a 'userId'
 - display only the posts belonging to the selected user
@@ -40,13 +40,13 @@ Filtering
 
 Use the condition:
 
-post.userId === selectedUserId
+> post.userId === selectedUserId
 
 to filter posts belonging to that user.
 
 - Display Behavior
 
-Your UI should:
+Your `UI` should:
 
 - show "Loading..." while fetching data
 - show "an error message" if fetching fails
