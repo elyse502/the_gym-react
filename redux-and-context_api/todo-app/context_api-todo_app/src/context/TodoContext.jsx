@@ -1,4 +1,4 @@
-import { createContext, useContext, useReducer } from "react";
+import { createContext, useContext, useReducer, useEffect } from "react";
 
 const TodoContext = createContext();
 
@@ -37,7 +37,20 @@ function reducer(state, action) {
 }
 
 export function TodoProvider({ children }) {
-  const [todos, dispatch] = useReducer(reducer, []);
+  // Load initial state from localStorage BEFORE first render
+  const [todos, dispatch] = useReducer(reducer, [], () => {
+    try {
+      const stored = localStorage.getItem("todos");
+      return stored ? JSON.parse(stored) : [];
+    } catch {
+      return [];
+    }
+  });
+
+  // Save to localStorage whenever todos change
+  useEffect(() => {
+    localStorage.setItem("todos", JSON.stringify(todos));
+  }, [todos]);
 
   function addTodo(text) {
     dispatch({ type: "ADD", payload: text });
