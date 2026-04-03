@@ -20,13 +20,18 @@
  */
 import { useReducer } from "react";
 
+const ACTION = {
+  INCREASE: "increase",
+  DECREASE: "decrease",
+};
+
 const initialState = { count: 0 };
 
 const reducer = (state, action) => {
   switch (action.type) {
-    case "increase":
+    case ACTION.INCREASE:
       return { count: state.count + 1 };
-    case "decrease":
+    case ACTION.DECREASE:
       return { count: state.count - 1 };
     default:
       return state;
