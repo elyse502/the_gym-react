@@ -18,14 +18,39 @@
  */
 import { useState, useCallback } from "react";
 import PrintTable from "./components/PrintTable";
+import { useMemo } from "react";
 
 const App = () => {
   const [number, setNumber] = useState(1);
   const [darkTheme, setDarkTheme] = useState(false);
 
-  const calculateTable = useCallback(() => {
+  const calculateTable = useCallback(
+    (value) => {
+      let newNum = value + number;
+      return [newNum * 1, newNum * 2, newNum * 3, newNum * 4, newNum * 5];
+    },
+    [number],
+  );
+
+  /**
+   * Using useMemo instead of useCallback would not be appropriate here, as we want to memoize the function itself, 
+   * not the result of the function. useMemo is used to memoize values, while useCallback is used to memoize functions.
+   * 
+   * And using useMemo you can't pass parameters to the memoized function, which is a key requirement in this scenario since 
+   * we want to calculate the table based on a dynamic value (the number input).
+   * 
+   * Even when calling calculateTable inside the PrintTable component, we want to ensure that the function reference remains 
+   * stable, which is why useCallback is the correct choice in this scenario. And we call it passing parentheses to ensure that 
+   * we are passing the function reference, not the result of the function.
+   *
+
+   
+  const calculateTable = useMemo(() => {
     return [number * 1, number * 2, number * 3, number * 4, number * 5];
   }, [number]);
+  */
+
+  // -----------------------------------------------------------------------------------------------------------------------------
 
   /*
   const calculateTable = () => {

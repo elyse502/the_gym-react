@@ -5,7 +5,7 @@ const PrintTable = ({ calculateTable }) => {
 
   useEffect(() => {
     console.log("Print Table Runs!");
-    setRows(calculateTable);
+    setRows(calculateTable());
   }, [calculateTable]);
 
   return rows.map((row, index) => {
