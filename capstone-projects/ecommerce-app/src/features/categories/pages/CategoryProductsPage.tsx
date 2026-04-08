@@ -18,6 +18,14 @@ function CategoryProductsPage() {
     (product) => product.category.id === Number(categoryId),
   );
 
+  if (!filteredProducts?.length) {
+    return (
+      <div className="flex items-center justify-center min-h-50">
+        <p className="text-xl font-semibold text-gray-600">No products found</p>
+      </div>
+    );
+  }
+
   return (
     <div className="p-4 space-y-4">
       {/* Back button */}

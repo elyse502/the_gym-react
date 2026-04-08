@@ -3,10 +3,16 @@ import { useNavigate } from "react-router-dom";
 import { useAuth } from "@/features/auth/context/AuthContext";
 import { isValidEmail } from "@/utils/validators";
 import type { User } from "@/types/auth.types";
+import { Navigate } from "react-router-dom";
 
 function LoginPage() {
   const { login } = useAuth();
   const navigate = useNavigate();
+  const { user } = useAuth();
+
+  if (user) {
+    return <Navigate to="/categories" replace />;
+  }
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");

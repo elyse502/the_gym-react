@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import LoginPage from "@/features/auth/pages/LoginPage";
 import CategoriesPage from "@/features/categories/pages/CategoriesPage";
 import CategoryProductsPage from "@/features/categories/pages/CategoryProductsPage";
@@ -10,6 +10,7 @@ function AppRoutes() {
     <BrowserRouter>
       <Routes>
         {/* Public */}
+        <Route path="/" element={<Navigate to="/categories" replace />} />
         <Route path="/login" element={<LoginPage />} />
 
         {/* Protected */}
