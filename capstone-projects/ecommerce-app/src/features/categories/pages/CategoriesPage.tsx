@@ -2,6 +2,7 @@ import { useFetch } from "@/hooks/useFetch";
 import type { Category } from "@/types/category.types";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "@/features/auth/context/AuthContext";
+import ThemeToggle from "@/components/ui/ThemeToggle";
 
 function CategoriesPage() {
   const navigate = useNavigate();
@@ -15,12 +16,14 @@ function CategoriesPage() {
   if (error) return <p className="p-4 text-red-500">{error}</p>;
 
   return (
-    <div className="p-4 space-y-4">
+    <div className="p-4 space-y-4 bg-white text-black dark:bg-black dark:text-white">
       {/* Header */}
       <div className="flex justify-between items-center">
         <h1 className="text-xl font-bold">Categories</h1>
 
         <div className="flex items-center gap-4">
+          <ThemeToggle />
+
           <span>{user?.email}</span>
 
           <button
