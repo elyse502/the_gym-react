@@ -12,46 +12,62 @@ function CategoriesPage() {
     "https://api.escuelajs.co/api/v1/categories",
   );
 
-  if (loading) return <p className="p-4">Loading categories...</p>;
-  if (error) return <p className="p-4 text-red-500">{error}</p>;
+  if (loading)
+    return (
+      <div className="p-6 text-center text-gray-500">Loading categories...</div>
+    );
+
+  if (error) return <div className="p-6 text-center text-red-500">{error}</div>;
 
   return (
-    <div className="p-4 space-y-4">
+    <div className="min-h-screen p-6">
       {/* Header */}
-      <div className="flex justify-between items-center">
-        <h1 className="text-xl font-bold">Categories</h1>
+      <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-8">
+        <div>
+          <h1 className="text-2xl font-semibold">Categories</h1>
+          <p className="text-sm text-gray-500">Browse products by category</p>
+        </div>
 
         <div className="flex items-center gap-4">
           <ThemeToggle />
 
-          <span>{user?.email}</span>
+          <div className="hidden md:block text-sm text-gray-500">
+            {user?.email}
+          </div>
 
           <button
             onClick={() => {
               logout();
               navigate("/login", { replace: true });
             }}
-            className="bg-red-500 text-white px-3 py-1"
+            className="px-4 py-2 text-sm rounded-md bg-red-500 text-white hover:bg-red-600 transition"
           >
             Logout
           </button>
         </div>
       </div>
 
-      {/* Categories Grid */}
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+      {/* Grid */}
+      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6">
         {data?.map((category) => (
           <div
             key={category.id}
             onClick={() => navigate(`/categories/${category.id}`)}
-            className="border p-2 cursor-pointer hover:shadow"
+            className="group cursor-pointer rounded-xl overflow-hidden border hover:shadow-lg transition"
           >
-            <img
-              src={category.image}
-              alt={category.name}
-              className="h-32 w-full object-cover"
-            />
-            <p className="mt-2 text-center">{category.name}</p>
+            {/* Image */}
+            <div className="h-36 overflow-hidden">
+              <img
+                src={category.image}
+                alt={category.name}
+                className="w-full h-full object-cover group-hover:scale-105 transition"
+              />
+            </div>
+
+            {/* Content */}
+            <div className="p-3 text-center">
+              <p className="text-sm font-medium">{category.name}</p>
+            </div>
           </div>
         ))}
       </div>
