@@ -4,7 +4,7 @@ function ThemeToggle() {
   const { theme, toggleTheme } = useTheme();
 
   return (
-    <button onClick={toggleTheme} className="border px-3 py-1">
+    <button onClick={toggleTheme} className="border px-3 py-1 cursor-pointer">
       {theme === "light" ? "Dark Mode" : "Light Mode"}
     </button>
   );

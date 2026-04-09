@@ -1,14 +1,13 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Navigate } from "react-router-dom";
 import { useAuth } from "@/features/auth/context/AuthContext";
 import { isValidEmail } from "@/utils/validators";
 import type { User } from "@/types/auth.types";
-import { Navigate } from "react-router-dom";
+import ThemeToggle from "@/components/ui/ThemeToggle";
 
 function LoginPage() {
-  const { login } = useAuth();
+  const { login, user } = useAuth();
   const navigate = useNavigate();
-  const { user } = useAuth();
 
   if (user) {
     return <Navigate to="/categories" replace />;
@@ -22,7 +21,6 @@ function LoginPage() {
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    // Validation
     if (!email || !password) {
       return setError("All fields are required");
     }
@@ -39,7 +37,7 @@ function LoginPage() {
       const users: User[] = await res.json();
 
       const foundUser = users.find(
-        (user) => user.email === email && user.password === password,
+        (u) => u.email === email && u.password === password,
       );
 
       if (!foundUser) {
@@ -48,7 +46,7 @@ function LoginPage() {
 
       login(foundUser);
       navigate("/categories", { replace: true });
-    } catch (err) {
+    } catch {
       setError("Something went wrong");
     } finally {
       setLoading(false);
@@ -56,36 +54,77 @@ function LoginPage() {
   };
 
   return (
-    <div className="flex h-screen items-center justify-center">
-      <form onSubmit={handleLogin} className="w-80 space-y-4">
-        <h2 className="text-xl font-bold">Login</h2>
+    <div className="min-h-screen flex items-center justify-center px-4">
+      {/* Top Right Theme Toggle */}
+      <div className="absolute top-4 right-4">
+        <ThemeToggle />
+      </div>
 
-        <input
-          type="email"
-          placeholder="Email"
-          className="w-full border p-2"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        />
+      {/* Card */}
+      <div
+        className="w-full max-w-md p-6 rounded-xl border shadow-sm 
+                      bg-white text-black 
+                      dark:bg-gray-900 dark:text-white dark:border-gray-700"
+      >
+        {/* Header */}
+        <div className="mb-6 text-center">
+          <h2 className="text-2xl font-semibold">Welcome back</h2>
+          <p className="text-sm text-gray-500 dark:text-gray-400">
+            Login to continue shopping
+          </p>
+        </div>
 
-        <input
-          type="password"
-          placeholder="Password"
-          className="w-full border p-2"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
+        {/* Form */}
+        <form onSubmit={handleLogin} className="space-y-4">
+          {/* Email */}
+          <div className="space-y-1">
+            <label className="text-sm">Email</label>
+            <input
+              type="email"
+              placeholder="Enter your email"
+              className="w-full px-3 py-2 rounded-md border outline-none
+                         bg-white text-black 
+                         dark:bg-gray-800 dark:text-white dark:border-gray-600
+                         focus:ring-2 focus:ring-black dark:focus:ring-white"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+          </div>
 
-        {error && <p className="text-red-500">{error}</p>}
+          {/* Password */}
+          <div className="space-y-1">
+            <label className="text-sm">Password</label>
+            <input
+              type="password"
+              placeholder="Enter your password"
+              className="w-full px-3 py-2 rounded-md border outline-none
+                         bg-white text-black 
+                         dark:bg-gray-800 dark:text-white dark:border-gray-600
+                         focus:ring-2 focus:ring-black dark:focus:ring-white"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+          </div>
 
-        <button
-          type="submit"
-          className="w-full bg-black text-white p-2"
-          disabled={loading}
-        >
-          {loading ? "Logging in..." : "Login"}
-        </button>
-      </form>
+          {/* Error */}
+          {error && <p className="text-sm text-red-500 text-center">{error}</p>}
+
+          {/* Button */}
+          <button
+            type="submit"
+            disabled={loading}
+            className="w-full py-2 rounded-md cursor-pointer 
+                       bg-black text-white 
+                       dark:bg-white dark:text-black
+                       hover:opacity-90 transition disabled:opacity-50"
+          >
+            {loading ? "Logging in..." : "Login"}
+          </button>
+          <p className="text-xs text-gray-400 text-center">
+            Use any valid user from API
+          </p>
+        </form>
+      </div>
     </div>
   );
 }
