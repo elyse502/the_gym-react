@@ -16,7 +16,7 @@ function CategoriesPage() {
   if (error) return <p className="p-4 text-red-500">{error}</p>;
 
   return (
-    <div className="p-4 space-y-4 bg-white text-black dark:bg-black dark:text-white">
+    <div className="p-4 space-y-4">
       {/* Header */}
       <div className="flex justify-between items-center">
         <h1 className="text-xl font-bold">Categories</h1>
