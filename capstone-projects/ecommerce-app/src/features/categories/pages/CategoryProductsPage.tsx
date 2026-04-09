@@ -10,46 +10,73 @@ function CategoryProductsPage() {
     "https://api.escuelajs.co/api/v1/products",
   );
 
-  if (loading) return <p className="p-4">Loading products...</p>;
-  if (error) return <p className="p-4 text-red-500">{error}</p>;
+  if (loading) {
+    return (
+      <div className="p-6 text-center text-gray-500">Loading products...</div>
+    );
+  }
 
-  // Filter products by category
+  if (error) {
+    return <div className="p-6 text-center text-red-500">{error}</div>;
+  }
+
   const filteredProducts = data?.filter(
     (product) => product.category.id === Number(categoryId),
   );
 
   if (!filteredProducts?.length) {
     return (
-      <div className="flex items-center justify-center min-h-50">
-        <p className="text-xl font-semibold text-gray-600">No products found</p>
+      <div className="min-h-screen flex items-center justify-center">
+        <p className="text-lg text-gray-500">No products found</p>
       </div>
     );
   }
 
   return (
-    <div className="p-4 space-y-4">
-      {/* Back button */}
-      <button onClick={() => navigate(-1)} className="bg-gray-200 px-3 py-1">
-        Back
-      </button>
+    <div className="min-h-screen p-6 space-y-6">
+      {/* Header */}
+      <div className="flex items-center justify-between">
+        <button
+          onClick={() => navigate(-1)}
+          className="px-4 py-2 rounded-md border text-sm 
+                     bg-white text-black 
+                     dark:bg-gray-800 dark:text-white dark:border-gray-600
+                     hover:bg-gray-100 dark:hover:bg-gray-700 transition"
+        >
+          Back
+        </button>
+        <h1 className="text-xl font-semibold">Products</h1>
+        <div /> {/* spacer */}
+      </div>
 
-      <h1 className="text-xl font-bold">Products</h1>
-
-      {/* Products Grid */}
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-        {filteredProducts?.map((product) => (
+      {/* Grid */}
+      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6">
+        {filteredProducts.map((product) => (
           <div
             key={product.id}
             onClick={() => navigate(`/products/${product.id}`)}
-            className="border p-2 cursor-pointer hover:shadow"
+            className="group cursor-pointer rounded-xl overflow-hidden border 
+                       hover:shadow-lg transition hover:-translate-y-1"
           >
-            <img
-              src={product.images[0]}
-              alt={product.title}
-              className="h-32 w-full object-cover"
-            />
-            <p className="mt-2 text-center">{product.title}</p>
-            <p className="text-center font-bold">${product.price}</p>
+            {/* Image */}
+            <div className="h-40 overflow-hidden">
+              <img
+                src={product.images[0]}
+                alt={product.title}
+                className="w-full h-full object-cover group-hover:scale-105 transition"
+              />
+            </div>
+
+            {/* Content */}
+            <div className="p-3 space-y-1 text-center">
+              <p className="text-sm font-medium line-clamp-2">
+                {product.title}
+              </p>
+
+              <p className="text-sm font-semibold text-blue-600 dark:text-blue-400">
+                ${product.price}
+              </p>
+            </div>
           </div>
         ))}
       </div>
