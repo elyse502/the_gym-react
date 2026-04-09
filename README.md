@@ -48,6 +48,7 @@
 |     **🧮 [Calculator 📐](https://calculator-seven-gamma-82.vercel.app)**      |        <a href="https://calculator-seven-gamma-82.vercel.app"><img src="./assets/calculator.png" width="400" height="200" alt="Calculator" /><a />         |
 |      **🌥️ [Weather App 🌩️](https://weather-app-one-chi-99.vercel.app)**       |         <a href="https://weather-app-one-chi-99.vercel.app"><img src="./assets/weather-app.png" width="400" height="200" alt="Weather App" /><a />         |
 |            **🚐 [Van Life 🐦‍🔥](https://van-life-green.vercel.app)**            |                <a href="https://van-life-green.vercel.app"><img src="./assets/van-life.png" width="400" height="200" alt="Van Life" /><a />                |
+|      **🛒 [Ecommerce-App 🏪](https://the-gym-ecommerce-app.vercel.app)**      |          <a href="https://the-gym-ecommerce-app.vercel.app"><img src="./assets/ecommerce-app.png" width="400" height="200" alt="Van Life" /><a />          |
 
 </div>
 
@@ -148,6 +149,7 @@ Through these projects, I've mastered:
 | Calculator        | [Live Demo](https://calculator-seven-gamma-82.vercel.app)    | [GitHub](https://github.com/elyse502/the_gym-react/tree/main/capstone-projects/calculator-app)   |
 | Weather App       | [Live Demo](https://weather-app-one-chi-99.vercel.app)       | [GitHub](https://github.com/elyse502/the_gym-react/tree/main/capstone-projects/weather-app)      |
 | Van Life          | [Live Demo](https://van-life-green.vercel.app)               | [GitHub](https://github.com/elyse502/the_gym-react/tree/main/react-router/van-life)              |
+| Ecommerce App     | [Live Demo](https://the-gym-ecommerce-app.vercel.app)        | [GitHub](https://github.com/elyse502/the_gym-react/tree/main/capstone-projects/ecommerce-app)    |
 
 ---
 
