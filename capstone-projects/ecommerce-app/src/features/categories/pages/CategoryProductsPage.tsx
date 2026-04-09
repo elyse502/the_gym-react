@@ -1,6 +1,7 @@
 import { useParams, useNavigate } from "react-router-dom";
 import { useFetch } from "@/hooks/useFetch";
 import type { Product } from "@/types/product.types";
+import ThemeToggle from "@/components/ui/ThemeToggle";
 
 function CategoryProductsPage() {
   const { categoryId } = useParams();
@@ -35,18 +36,25 @@ function CategoryProductsPage() {
   return (
     <div className="min-h-screen p-6 space-y-6">
       {/* Header */}
-      <div className="flex items-center justify-between">
+      <div className="relative flex items-center justify-between border-b pb-4">
+        {/* Left */}
         <button
           onClick={() => navigate(-1)}
-          className="px-4 py-2 rounded-md border text-sm 
-                     bg-white text-black 
-                     dark:bg-gray-800 dark:text-white dark:border-gray-600
-                     hover:bg-gray-100 dark:hover:bg-gray-700 transition"
+          className="flex items-center gap-1 px-3 py-1.5 rounded-md border text-sm 
+               bg-white text-black 
+               dark:bg-gray-800 dark:text-white dark:border-gray-600
+               hover:bg-gray-100 dark:hover:bg-gray-700 transition"
         >
-          Back
+          ← Back
         </button>
-        <h1 className="text-xl font-semibold">Products</h1>
-        <div /> {/* spacer */}
+
+        {/* Center */}
+        <h1 className="absolute left-1/2 -translate-x-1/2 text-xl font-semibold tracking-tight">
+          Products
+        </h1>
+
+        {/* Right */}
+        <ThemeToggle />
       </div>
 
       {/* Grid */}

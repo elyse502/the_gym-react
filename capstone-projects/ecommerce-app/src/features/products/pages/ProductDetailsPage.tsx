@@ -2,6 +2,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import { useFetch } from "@/hooks/useFetch";
 import type { Product } from "@/types/product.types";
 import { useState } from "react";
+import ThemeToggle from "@/components/ui/ThemeToggle";
 
 function ProductDetailsPage() {
   const { productId } = useParams();
@@ -33,20 +34,25 @@ function ProductDetailsPage() {
   return (
     <div className="min-h-screen p-6 space-y-6">
       {/* Header */}
-      <div className="flex items-center justify-between">
+      <div className="relative flex items-center justify-between border-b pb-4">
+        {/* Left */}
         <button
           onClick={() => navigate(-1)}
           className="px-4 py-2 rounded-md border text-sm 
-                     bg-white text-black 
-                     dark:bg-gray-800 dark:text-white dark:border-gray-600
-                     hover:bg-gray-100 dark:hover:bg-gray-700 transition"
+               bg-white text-black 
+               dark:bg-gray-800 dark:text-white dark:border-gray-600
+               hover:bg-gray-100 dark:hover:bg-gray-700 transition"
         >
-          Back
+          ← Back
         </button>
 
-        <h1 className="text-lg font-semibold">Product Details</h1>
+        {/* Center (absolute) */}
+        <h1 className="absolute left-1/2 -translate-x-1/2 text-lg font-semibold">
+          Product Details
+        </h1>
 
-        <div />
+        {/* Right */}
+        <ThemeToggle />
       </div>
 
       {/* Content */}
@@ -88,7 +94,7 @@ function ProductDetailsPage() {
             ${data.price}
           </p>
 
-          <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
+          <p className="text-gray-600 dark:text-gray-600 leading-relaxed">
             {data.description}
           </p>
 
