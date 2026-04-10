@@ -1,8 +1,10 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 
 function Navbar() {
   const base = "px-4 py-2 text-sm";
   const active = "font-semibold border-b-2 border-black dark:border-white";
+
+  const navigate = useNavigate();
 
   return (
     <nav
@@ -12,7 +14,10 @@ function Navbar() {
     >
       <div className="max-w-6xl mx-auto px-6 py-3 flex items-center justify-between">
         {/* Logo */}
-        <h1 className="text-lg font-semibold cursor-pointer">
+        <h1
+          className="text-lg font-semibold cursor-pointer"
+          onClick={() => navigate("/")}
+        >
           React Landing Page
         </h1>
 

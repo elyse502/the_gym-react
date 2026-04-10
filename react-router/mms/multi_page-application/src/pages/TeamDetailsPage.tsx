@@ -22,7 +22,7 @@ function TeamDetailsPage() {
       <button
         onClick={() => navigate(-1)}
         className="px-4 py-2 rounded-md border text-sm
-                   bg-white text-black 
+                   bg-white text-black cursor-pointer 
                    dark:bg-gray-800 dark:text-white dark:border-gray-600
                    hover:bg-gray-100 dark:hover:bg-gray-700 transition"
       >
