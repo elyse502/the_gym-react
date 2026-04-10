@@ -1,11 +1,7 @@
-const App = () => {
-  return (
-    <div>
-      <h1 className="text-center text-2xl font-bold mt-20 text-indigo-500">
-        Multi Page Application
-      </h1>
-    </div>
-  );
-};
+import AppRoutes from "./routes/AppRoutes";
+
+function App() {
+  return <AppRoutes />;
+}
 
 export default App;
