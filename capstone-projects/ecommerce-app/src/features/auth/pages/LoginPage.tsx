@@ -121,7 +121,15 @@ function LoginPage() {
             {loading ? "Logging in..." : "Login"}
           </button>
           <p className="text-xs text-gray-400 text-center">
-            Use any valid user from API
+            Use any valid user from API 👉{" "}
+            <a
+              className="text-red-500"
+              href="https://api.escuelajs.co/api/v1/users"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              via API
+            </a>
           </p>
         </form>
       </div>
