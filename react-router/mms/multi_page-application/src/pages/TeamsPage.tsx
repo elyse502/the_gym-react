@@ -70,7 +70,7 @@ function TeamsPage() {
             <button
               key={r}
               onClick={() => handleRole(r)}
-              className={`px-4 py-1 rounded-md text-sm border transition
+              className={`px-4 py-1 rounded-md text-sm border transition cursor-pointer
                 ${
                   isActive
                     ? "bg-black text-white dark:bg-white dark:text-black"
