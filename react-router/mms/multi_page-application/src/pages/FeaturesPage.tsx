@@ -1,9 +1,7 @@
-const FeaturesPage = () => {
-  return (
-    <div>
-      <h1>Features</h1>
-    </div>
-  );
-};
+import FeaturesSection from "../components/sections/FeaturesSection";
+
+function FeaturesPage() {
+  return <FeaturesSection />;
+}
 
 export default FeaturesPage;

@@ -1,9 +1,13 @@
-const HomePage = () => {
+import Hero from "../components/sections/Hero";
+import Footer from "../components/sections/Footer";
+
+function HomePage() {
   return (
-    <div>
-      <h1>Home</h1>
-    </div>
+    <>
+      <Hero />
+      <Footer />
+    </>
   );
-};
+}
 
 export default HomePage;
