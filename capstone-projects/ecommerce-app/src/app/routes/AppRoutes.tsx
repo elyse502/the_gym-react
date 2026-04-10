@@ -4,6 +4,7 @@ import CategoriesPage from "@/features/categories/pages/CategoriesPage";
 import CategoryProductsPage from "@/features/categories/pages/CategoryProductsPage";
 import ProductDetailsPage from "@/features/products/pages/ProductDetailsPage";
 import ProtectedRoute from "./ProtectedRoute";
+import NotFoundPage from "@/features/404/NotFoundPage";
 
 function AppRoutes() {
   return (
@@ -22,6 +23,9 @@ function AppRoutes() {
           />
           <Route path="/products/:productId" element={<ProductDetailsPage />} />
         </Route>
+
+        {/* 404 Page */}
+        <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </BrowserRouter>
   );
