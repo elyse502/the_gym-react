@@ -7,12 +7,20 @@ function TeamsPage() {
   const navigate = useNavigate();
 
   const search = searchParams.get("search") || "";
+  const role = searchParams.get("role") || "All";
 
-  // Filter members by name
-  const filteredMembers = members.filter((member) =>
-    member.name.toLowerCase().includes(search.toLowerCase()),
-  );
+  // Combined filtering
+  const filteredMembers = members.filter((member) => {
+    const matchesSearch = member.name
+      .toLowerCase()
+      .includes(search.toLowerCase());
 
+    const matchesRole = role === "All" || member.role === role;
+
+    return matchesSearch && matchesRole;
+  });
+
+  // Handle search
   const handleSearch = (value: string) => {
     setSearchParams((prev) => {
       if (value) {
@@ -23,6 +31,20 @@ function TeamsPage() {
       return prev;
     });
   };
+
+  // Handle role filter
+  const handleRole = (value: string) => {
+    setSearchParams((prev) => {
+      if (value === "All") {
+        prev.delete("role");
+      } else {
+        prev.set("role", value);
+      }
+      return prev;
+    });
+  };
+
+  const roles = ["All", "Manager", "Developer", "Designer"];
 
   return (
     <div className="space-y-6">
@@ -38,6 +60,28 @@ function TeamsPage() {
                    bg-white text-black 
                    dark:bg-gray-800 dark:text-white dark:border-gray-600"
       />
+
+      {/* Role Filters */}
+      <div className="flex flex-wrap gap-2">
+        {roles.map((r) => {
+          const isActive = role === r;
+
+          return (
+            <button
+              key={r}
+              onClick={() => handleRole(r)}
+              className={`px-4 py-1 rounded-md text-sm border transition
+                ${
+                  isActive
+                    ? "bg-black text-white dark:bg-white dark:text-black"
+                    : "bg-white text-black dark:bg-gray-800 dark:text-white"
+                }`}
+            >
+              {r}
+            </button>
+          );
+        })}
+      </div>
 
       {/* List */}
       {filteredMembers.length === 0 ? (
