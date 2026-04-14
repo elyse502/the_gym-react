@@ -21,6 +21,59 @@ Clear, simple breakdown. No noise.
 - **Router** → controls navigation system
 - **Route** → maps a URL to a component
 
+<details>
+   <summary>Routes vs Route</summary>
+
+   In **React Router**, `<Routes>` and `<Route>` serve very different roles, even though their names are similar.
+
+### 🔹 `<Routes>` (plural)
+
+* This is a **container** component.
+* It **groups multiple `<Route>` components** together.
+* It handles the **matching logic** — deciding which route should render based on the current URL.
+* In v6+, it replaced the older `<Switch>` component.
+
+👉 Think of it as: *“the router’s decision-maker.”*
+
+---
+
+### 🔹 `<Route>` (singular)
+
+* This defines a **single route**.
+* It maps a **URL path → UI element (component)**.
+* Each `<Route>` tells React Router: *“if the URL matches this path, render this.”*
+
+👉 Think of it as: *“one rule inside the router.”*
+
+---
+
+### 🧠 Example
+
+```jsx
+import { Routes, Route } from "react-router-dom";
+
+function App() {
+  return (
+    <Routes>
+      <Route path="/" element={<Home />} />
+      <Route path="/about" element={<About />} />
+    </Routes>
+  );
+}
+```
+
+* `<Routes>` wraps everything and decides which route matches.
+* Each `<Route>` defines a path and what to render.
+
+---
+
+### ⚡ Key Difference (simple)
+
+* `<Routes>` = **container + matcher**
+* `<Route>` = **individual route definition**
+
+</details>
+
 ---
 
 ## Why does it exist?
