@@ -1,4 +1,4 @@
-import Counter from "./features/counter/counter";
+import Counter from "./features/counter/Counter";
 import Users from "./features/users/Users";
 
 const App = () => {

@@ -365,3 +365,153 @@ extraReducers: (builder) => {
 Async work happens outside Redux, results go into Redux.
 
 </details>
+
+<br/><hr/><br/>
+
+<details>
+  <summary>How do we handle asynchronous operation in context api?</summary>
+
+## Async in Context API
+
+---
+
+## What it is
+
+You handle async work inside the Context provider, then update state when the result arrives.
+
+---
+
+## Why it exists
+
+Context only shares state.
+It does not provide built-in async handling like Redux.
+
+So you manage async manually.
+
+---
+
+## How it works
+
+Flow
+
+1. Create context
+2. Store state in provider
+3. Write async function inside provider
+4. Update state after request
+
+---
+
+## Example
+
+### 1. Create Context
+
+```typescript id="v1qj7c"
+import { createContext } from "react";
+
+export const UserContext = createContext(null);
+```
+
+---
+
+### 2. Provider with async logic
+
+```tsx id="u3w3nm"
+import { useState } from "react";
+import { UserContext } from "./UserContext";
+
+export function UserProvider({ children }: { children: React.ReactNode }) {
+  const [users, setUsers] = useState<any[]>([]);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+
+  const fetchUsers = async () => {
+    setLoading(true);
+    setError(null);
+
+    try {
+      const res = await fetch("https://jsonplaceholder.typicode.com/users");
+
+      if (!res.ok) {
+        throw new Error("Failed to fetch");
+      }
+
+      const data = await res.json();
+      setUsers(data);
+    } catch (err: any) {
+      setError(err.message);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  return (
+    <UserContext.Provider value={{ users, loading, error, fetchUsers }}>
+      {children}
+    </UserContext.Provider>
+  );
+}
+```
+
+---
+
+### 3. Use in Component
+
+```tsx id="3vszsz"
+import { useContext, useEffect } from "react";
+import { UserContext } from "./UserContext";
+
+export default function Users() {
+  const { users, loading, error, fetchUsers }: any = useContext(UserContext);
+
+  useEffect(() => {
+    fetchUsers();
+  }, []);
+
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>{error}</p>;
+
+  return (
+    <ul>
+      {users.map((u: any) => (
+        <li key={u.id}>{u.name}</li>
+      ))}
+    </ul>
+  );
+}
+```
+
+---
+
+## Key Idea
+
+Context does not manage async for you.
+
+You:
+
+- write async function
+- update loading, data, error manually
+- expose them through context
+
+---
+
+## Mental Model
+
+Component calls function → async runs → state updates → UI updates
+
+---
+
+## When to use this approach
+
+Use Context for async when
+
+- app is small or medium
+- state is shared but simple
+
+Avoid when
+
+- many async flows
+- complex state logic
+
+In that case use Redux or other tools.
+
+</details>
